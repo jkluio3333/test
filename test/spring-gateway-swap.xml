@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<!-- 处理器 -->
+	<bean id="gateWayPayProcesser" class="com.ninefbank.smallpay.channel.core.processer.gateway.GateWayPayProcesser"/>
+	
+	<!--网关路由处理器策略集合-->
+    <bean id="gatewayProcessMap" class="org.springframework.beans.factory.config.MapFactoryBean">
+        <property name="targetMapClass" value="java.util.HashMap"/>
+        <property name="sourceMap">
+            <map>
+                <entry key="GATEWAYPAY" value-ref="gateWayPayProcesser"/>
+            </map>
+        </property>
+    </bean>
+   
+</beans>
